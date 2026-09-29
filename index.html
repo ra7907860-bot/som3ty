@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Som3ty ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Georgia, serif;
+      color: white;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(55, 8, 75, .88), rgba(115, 20, 100, .82)),
+        url("image1.jpg") center/cover fixed;
+    }
+
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: rgba(30, 0, 50, .45);
+    }
+
+    .card {
+      width: min(520px, 100%);
+      padding: 35px 24px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 28px;
+      background: rgba(255,255,255,.13);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 35px rgba(255, 70, 220, .4);
+      animation: appear 1.2s ease;
+    }
+
+    h1 {
+      font-size: clamp(42px, 12vw, 78px);
+      color: #ffd5fa;
+      text-shadow: 0 0 12px #ff32dc, 0 0 30px #ff32dc;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin: 18px 0;
+      color: #fff1fd;
+    }
+
+    p {
+      font-size: 19px;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 14px 28px;
+      margin-top: 18px;
+      color: white;
+      background: linear-gradient(90deg, #ff2fcf, #8d39ff);
+      font-size: 17px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(255, 45, 210, .7);
+      transition: .3s;
+    }
+
+    button:hover {
+      transform: scale(1.07);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-height: 440px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 3px solid rgba(255,255,255,.55);
+      box-shadow: 0 0 22px rgba(255, 39, 210, .55);
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      color: #ff9bea;
+      font-size: 25px;
+      animation: float 5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="cover">
+    <section class="card">
+      <div id="welcome">
+        <h1>Som3ty ❤️</h1>
+        <p>مفاجأة صغيرة مخصوص ليكي يا Rodina ✨</p>
+        <button onclick="showBirthday()">افتحي المفاجأة 🎁</button>
+      </div>
+
+      <div id="birthday" class="hidden">
+        <h1>Happy Birthday</h1>
+        <h2>Rodina ❤️</h2>
+
+        <p>
+          كل سنة وانتي طيبة يا سمعتي،
+          وعقبال سنين كتير كلها فرحة ونجاح وضحك.
+        </p>
+
+        <p>
+          وجودك في حياتي حاجة جميلة جدًا،
+          وربنا يخليكي ليا دايمًا ✨
+        </p>
+
+        <div class="gallery">
+          <img src="image1.jpg" alt="Rodina photo 1">
+          <img src="image2.jpg" alt="Rodina photo 2">
+          <img src="image3.jpg" alt="Rodina photo 3">
+        </div>
+
+        <p style="margin-top:25px">
+          بحبك يا Rodina ❤️
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showBirthday() {
+      document.getElementById("welcome").classList.add("hidden");
+      document.getElementById("birthday").classList.remove("hidden");
+
+      setInterval(createHeart, 400);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "♥";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = 15 + Math.random() * 25 + "px";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  </script>
+</body>
+</html>
